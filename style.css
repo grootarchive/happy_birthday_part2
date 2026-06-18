@@ -1,0 +1,279 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+
+    background:
+    linear-gradient(135deg,#ff9a9e,#fad0c4,#fad0c4,#ffd1ff);
+
+    font-family:Poppins,sans-serif;
+}
+
+/* Floating Background */
+
+body::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:200%;
+    height:200%;
+
+    background:
+    radial-gradient(circle,#ffffff55 2px,transparent 2px);
+
+    background-size:60px 60px;
+
+    animation:move 20s linear infinite;
+
+    opacity:.4;
+
+}
+
+@keyframes move{
+
+    from{
+        transform:translate(0,0);
+    }
+
+    to{
+        transform:translate(-60px,-60px);
+    }
+
+}
+
+/* Book */
+
+.book{
+
+    position:relative;
+
+    width:340px;
+    height:500px;
+
+    perspective:2500px;
+
+}
+
+.page{
+
+    position:absolute;
+
+    width:100%;
+    height:100%;
+
+    background:white;
+
+    border-radius:0 12px 12px 0;
+
+    transform-origin:left;
+
+    transition:transform 1.3s ease;
+
+    box-shadow:
+    0 10px 40px rgba(0,0,0,.3);
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    padding:35px;
+
+    backface-visibility:hidden;
+
+    overflow:hidden;
+
+}
+
+.page::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    top:0;
+
+    width:12px;
+    height:100%;
+
+    background:
+    linear-gradient(to right,#ddd,#fff);
+
+}
+
+.page-content{
+
+    text-align:center;
+
+    z-index:2;
+
+}
+
+.page h2{
+
+    font-family:"Great Vibes";
+
+    font-size:30px;
+
+    color:#ff4f81;
+
+    margin-bottom:20px;
+
+}
+
+.page p{
+
+    font-size:18px;
+
+    line-height:1.7;
+
+    color:#444;
+
+}
+
+.page img{
+
+    width:170px;
+
+    margin-top:25px;
+
+    animation:float 3s ease-in-out infinite;
+
+}
+
+@keyframes float{
+
+    50%{
+        transform:translateY(-10px);
+    }
+
+}
+
+.cover{
+
+    background:
+    linear-gradient(135deg,#ff5e7e,#ff8da1);
+
+    color:white;
+
+}
+
+.cover h1{
+
+    color:white;
+
+    font-size:70px;
+
+}
+
+.cover p{
+
+    color:white;
+
+    font-size:22px;
+
+}
+
+.page.flipped{
+
+    transform:rotateY(-180deg);
+
+}
+
+/* Buttons */
+
+.controls{
+
+    position:absolute;
+
+    bottom:30px;
+
+    display:flex;
+
+    gap:20px;
+
+}
+
+button{
+
+    padding:15px 30px;
+
+    border:none;
+
+    border-radius:40px;
+
+    font-size:18px;
+
+    background:#ff4f81;
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+button:hover{
+
+    transform:scale(1.1);
+
+    background:#ff215f;
+
+}
+
+/* Confetti Canvas */
+
+canvas{
+
+    position:fixed;
+
+    left:0;
+    top:0;
+
+    pointer-events:none;
+
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+    .book{
+
+        width:90vw;
+
+        height:70vh;
+
+    }
+
+    .page h1{
+
+        font-size:48px;
+
+    }
+
+    .page h2{
+
+        font-size:40px;
+
+    }
+
+    .page p{
+
+        font-size:16px;
+
+    }
+
+}
